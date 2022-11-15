@@ -43,6 +43,10 @@ class _CustomDrawerState extends State<CustomDrawer>
             title: Text('Movies'),
           ),
           ListTile(
+            leading: Icon(Icons.tv),
+            title: Text('TV Series'),
+          ),
+          ListTile(
             leading: Icon(Icons.save_alt),
             title: Text('Watchlist'),
             onTap: () {
