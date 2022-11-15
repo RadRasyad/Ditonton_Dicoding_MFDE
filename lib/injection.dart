@@ -28,6 +28,7 @@ import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.
 import 'package:ditonton/presentation/provider/tvshows/tvseries_list_notifier.dart';
 import 'package:ditonton/presentation/provider/tvshows/tvseries_search_notifier.dart';
 import 'package:ditonton/presentation/provider/tvshows/watchlist_tvseries_notifier.dart';
+import 'package:ditonton/presentation/provider/watchlist_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -119,7 +120,13 @@ void init() {
   );
   locator.registerFactory(
         () => WatchlistTvSeriesNotifier(
-      getWatchlistTvSeries: locator(),
+      getWatchlistTvSeriess: locator(),
+    ),
+  );
+  locator.registerFactory(
+        () => WatchlistNotifier(
+          getWatchlistMovies: locator(),
+          getWatchlistTvSeries: locator(),
     ),
   );
 

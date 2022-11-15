@@ -1,52 +1,47 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
+import 'package:ditonton/domain/entities/movies/movie.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
+import 'package:ditonton/presentation/pages/movie/movie_detail_page.dart';
+import 'package:ditonton/presentation/pages/movie/popular_movies_page.dart';
+import 'package:ditonton/presentation/pages/movie/search_movie_page.dart';
+import 'package:ditonton/presentation/pages/movie/top_rated_movies_page.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/pages/tvseries/popular_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/search_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/top_rated_tvseries_page.dart';
+import 'package:ditonton/presentation/pages/movie/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/tvseries_detail_page.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_list_notifier.dart';
+import 'package:ditonton/presentation/pages/tvseries/watchlist_tvseries_page.dart';
+import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
+import 'package:ditonton/presentation/provider/watchlist_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-class HomeTvSeriesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/home_tvseries';
+class HomeWatchlistPage extends StatefulWidget {
+  static const ROUTE_NAME = '/home_watchlist';
 
   @override
-  _HomeTvSeriesPageState createState() => _HomeTvSeriesPageState();
+  _HomeWatchlistPageState createState() => _HomeWatchlistPageState();
 }
 
-class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
+class _HomeWatchlistPageState extends State<HomeWatchlistPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(
-            () => Provider.of<TvSeriesListNotifier>(context, listen: false)
-          ..fetchNowPlayingTvSeries()
-          ..fetchPopularTvSeries()
-          ..fetchTopRatedTvSeries());
+            () => Provider.of<WatchlistNotifier>(context, listen: false)
+          ..getWatchlistMovie()
+          ..getWatchlistTvSeriess());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ditonton'),
+        title: Text('Watchlist'),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, SearchTvSeriesPage.ROUTE_NAME);
-            },
-            icon: Icon(Icons.search),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -54,52 +49,36 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Now Playing',
-                style: kHeading6,
+              _buildSubHeading(
+                title: 'Movies',
+                onTap: () =>
+                    Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME),
               ),
-              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.nowPlayingState;
+              Consumer<WatchlistNotifier>(builder: (context, data, child) {
+                final state = data.listMoviesState;
                 if (state == RequestState.Loading) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state == RequestState.Loaded) {
-                  return TvSeriesList(data.nowPlayingTvSeries);
+                  return MovieList(data.listMovies);
                 } else {
                   return Text('Failed');
                 }
               }),
               _buildSubHeading(
-                title: 'Popular',
+                title: 'Tv Series',
                 onTap: () =>
-                    Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, WatchlistTvSeriesPage.ROUTE_NAME),
               ),
-              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.popularTvSeriesState;
+              Consumer<WatchlistNotifier>(builder: (context, data, child) {
+                final state = data.listTvSeriesState;
                 if (state == RequestState.Loading) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state == RequestState.Loaded) {
-                  return TvSeriesList(data.popularTvSeries);
-                } else {
-                  return Text('Failed');
-                }
-              }),
-              _buildSubHeading(
-                title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME),
-              ),
-              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.topRatedTvSeriesState;
-                if (state == RequestState.Loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return TvSeriesList(data.topRatedTvSeries);
+                  return TvSeriesList(data.listTvSeries);
                 } else {
                   return Text('Failed');
                 }
@@ -131,6 +110,49 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
       ],
     );
   }
+}
+
+class MovieList extends StatelessWidget {
+  final List<Movie> movies;
+
+  MovieList(this.movies);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final movie = movies[index];
+          return Container(
+            padding: const EdgeInsets.all(8),
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  MovieDetailPage.ROUTE_NAME,
+                  arguments: movie.id,
+                );
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(16)),
+                child: CachedNetworkImage(
+                  imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
+              ),
+            ),
+          );
+        },
+        itemCount: movies.length,
+      ),
+    );
+  }
+
 }
 
 class TvSeriesList extends StatelessWidget {

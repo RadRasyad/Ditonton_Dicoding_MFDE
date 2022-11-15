@@ -14,15 +14,15 @@ class WatchlistTvSeriesNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  WatchlistTvSeriesNotifier({required this.getWatchlistTvSeries});
+  WatchlistTvSeriesNotifier({required this.getWatchlistTvSeriess});
 
-  final GetWatchListTvSeries getWatchlistTvSeries;
+  final GetWatchListTvSeries getWatchlistTvSeriess;
 
   Future<void> fetchWatchlistTvSeriess() async {
     _watchlistState = RequestState.Loading;
     notifyListeners();
 
-    final result = await getWatchlistTvSeries.execute();
+    final result = await getWatchlistTvSeriess.execute();
     result.fold(
       (failure) {
         _watchlistState = RequestState.Error;

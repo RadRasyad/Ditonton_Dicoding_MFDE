@@ -1,4 +1,5 @@
 import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:ditonton/presentation/pages/home_watchlist_page.dart';
 import 'package:ditonton/presentation/pages/movie/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/home_tvseries_page.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _CustomDrawerState extends State<CustomDrawer>
             leading: Icon(Icons.save_alt),
             title: Text('Watchlist'),
             onTap: () {
-              Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
+              Navigator.pushNamed(context, HomeWatchlistPage.ROUTE_NAME);
               _animationController.reverse();
             },
           ),

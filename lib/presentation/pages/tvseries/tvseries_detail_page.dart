@@ -1,20 +1,10 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/genre.dart';
-import 'package:ditonton/domain/entities/movies/movie.dart';
-import 'package:ditonton/domain/entities/movies/movie_detail.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries_detail.dart';
-import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
