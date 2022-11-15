@@ -1,12 +1,14 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/presentation/provider/movies/movie_search_notifier.dart';
+import 'package:ditonton/presentation/provider/tvshows/tvseries_search_notifier.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
+import 'package:ditonton/presentation/widgets/tvseries_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search';
+class SearchTvSeriesPage extends StatelessWidget {
+  static const ROUTE_NAME = '/search_tvseries';
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class SearchPage extends StatelessWidget {
           children: [
             TextField(
               onSubmitted: (query) {
-                Provider.of<MovieSearchNotifier>(context, listen: false)
-                    .fetchMovieSearch(query);
+                Provider.of<TvSeriesSearchNotifier>(context, listen: false)
+                    .fetchTvSerieSearch(query);
               },
               decoration: InputDecoration(
                 hintText: 'Search title',
@@ -36,7 +38,7 @@ class SearchPage extends StatelessWidget {
               'Search Result',
               style: kHeading6,
             ),
-            Consumer<MovieSearchNotifier>(
+            Consumer<TvSeriesSearchNotifier>(
               builder: (context, data, child) {
                 if (data.state == RequestState.Loading) {
                   return Center(
@@ -48,8 +50,8 @@ class SearchPage extends StatelessWidget {
                     child: ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final movie = data.searchResult[index];
-                        return MovieCard(movie);
+                        final tvSeries = data.searchResult[index];
+                        return TvSeriesCard(tvSeries);
                       },
                       itemCount: result.length,
                     ),

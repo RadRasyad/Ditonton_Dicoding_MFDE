@@ -19,7 +19,7 @@ class TvSeriesDetailResponse extends Equatable {
     required this.numberOfSeasons,
     required this.originCountry,
     required this.originalLanguage,
-    required this.title,
+    required this.originalName,
     required this.overview,
     required this.popularity,
     required this.posterPath,
@@ -45,7 +45,7 @@ class TvSeriesDetailResponse extends Equatable {
   final int numberOfSeasons;
   final List<String> originCountry;
   final String originalLanguage;
-  final String title;
+  final String originalName;
   final String overview;
   final double popularity;
   final String posterPath;
@@ -73,7 +73,7 @@ class TvSeriesDetailResponse extends Equatable {
         numberOfSeasons: json["number_of_seasons"],
         originCountry: List<String>.from(json["origin_country"].map((x) => x)),
         originalLanguage: json["original_language"],
-        title: json["original_name"],
+        originalName: json["original_name"],
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
         posterPath: json["poster_path"],
@@ -100,7 +100,7 @@ class TvSeriesDetailResponse extends Equatable {
     "number_of_seasons": numberOfSeasons,
     "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
     "original_language": originalLanguage,
-    "original_name": title,
+    "original_name": originalName,
     "overview": overview,
     "popularity": popularity,
     "poster_path": posterPath,
@@ -118,7 +118,7 @@ class TvSeriesDetailResponse extends Equatable {
       id: this.id,
       numberOfEpisodes: this.numberOfEpisodes,
       numberOfSeasons: this.numberOfSeasons,
-      title: this.title,
+      name: this.name,
       overview: this.overview,
       popularity: this.popularity,
       posterPath: this.posterPath,
@@ -145,7 +145,7 @@ class TvSeriesDetailResponse extends Equatable {
     numberOfSeasons,
     originCountry,
     originalLanguage,
-    title,
+    originalName,
     overview,
     popularity,
     posterPath,

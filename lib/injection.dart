@@ -103,7 +103,7 @@ void init() {
     ),
   );
   locator.registerFactory(
-        () => TvSerieSearchNotifier(
+        () => TvSeriesSearchNotifier(
       searchTvSeries: locator(),
     ),
   );

@@ -1,5 +1,6 @@
 import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
+import 'package:ditonton/presentation/pages/movie/watchlist_movies_page.dart';
+import 'package:ditonton/presentation/pages/tvseries/home_tvseries_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -45,6 +46,10 @@ class _CustomDrawerState extends State<CustomDrawer>
           ListTile(
             leading: Icon(Icons.tv),
             title: Text('TV Series'),
+            onTap: () {
+              Navigator.pushNamed(context, HomeTvSeriesPage.ROUTE_NAME);
+              _animationController.reverse();
+            },
           ),
           ListTile(
             leading: Icon(Icons.save_alt),

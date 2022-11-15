@@ -4,10 +4,10 @@ import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
 import 'package:ditonton/domain/usecases/tvshows/search_movies.dart';
 import 'package:flutter/foundation.dart';
 
-class TvSerieSearchNotifier extends ChangeNotifier {
+class TvSeriesSearchNotifier extends ChangeNotifier {
   final SearchTvSeries searchTvSeries;
 
-  TvSerieSearchNotifier({required this.searchTvSeries});
+  TvSeriesSearchNotifier({required this.searchTvSeries});
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
@@ -18,7 +18,7 @@ class TvSerieSearchNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  Future<void> fetchTvSeriesearch(String query) async {
+  Future<void> fetchTvSerieSearch(String query) async {
     _state = RequestState.Loading;
     notifyListeners();
 
