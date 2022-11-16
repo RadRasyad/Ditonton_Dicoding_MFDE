@@ -159,7 +159,7 @@ final testWatchlistTvSeries = TvSeries.watchlist(
   overview: 'overview',
 );
 
-final testTvSeriesTable = MovieTable(
+final testTvSeriesTable = TvSeriesTable(
   id: 2,
   title: 'title',
   posterPath: 'posterPath',
