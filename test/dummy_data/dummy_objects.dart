@@ -103,7 +103,6 @@ final testTvSeries = TvSeries(
   posterPath: '/kY0BogCM8SkNJ0MNiHB3VTM86Tz.jpg',
   voteAverage: 7.9,
   voteCount: 3466,
-
 );
 
 final testTvSeriesList = [testTvSeries];

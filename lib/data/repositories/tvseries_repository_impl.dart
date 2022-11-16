@@ -106,10 +106,10 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<Either<Failure, String>> saveTvSeriesWatchlist(TvSeriesDetail TvSeries) async {
+  Future<Either<Failure, String>> saveTvSeriesWatchlist(TvSeriesDetail tvSeries) async {
     try {
       final result =
-      await localDataSource.insertWatchlist(TvSeriesTable.fromEntity(TvSeries));
+      await localDataSource.insertWatchlist(TvSeriesTable.fromEntity(tvSeries));
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
