@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/domain/entities/movies/movie.dart';
 import 'package:ditonton/domain/usecases/movies/get_movie_detail.dart';
-import 'package:ditonton/domain/usecases/get_movie_recommendations.dart';
+import 'package:ditonton/domain/usecases/movies/get_movie_recommendations.dart';
 import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/usecases/get_movie_watchlist_status.dart';
-import 'package:ditonton/domain/usecases/remove_movies_watchlist.dart';
-import 'package:ditonton/domain/usecases/save_movies_watchlist.dart';
+import 'package:ditonton/domain/usecases/movies/get_movie_watchlist_status.dart';
+import 'package:ditonton/domain/usecases/movies/remove_movies_watchlist.dart';
+import 'package:ditonton/domain/usecases/movies/save_movies_watchlist.dart';
 import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,16 +19,16 @@ import 'movie_detail_notifier_test.mocks.dart';
   GetMovieDetail,
   GetMovieRecommendations,
   GetWatchListStatus,
-  SaveWatchlist,
-  RemoveWatchlist,
+  SaveMoviesWatchlist,
+  RemoveMoviesWatchlist,
 ])
 void main() {
   late MovieDetailNotifier provider;
   late MockGetMovieDetail mockGetMovieDetail;
   late MockGetMovieRecommendations mockGetMovieRecommendations;
   late MockGetWatchListStatus mockGetWatchlistStatus;
-  late MockSaveWatchlist mockSaveWatchlist;
-  late MockRemoveWatchlist mockRemoveWatchlist;
+  late MockSaveMoviesWatchlist mockSaveWatchlist;
+  late MockRemoveMoviesWatchlist mockRemoveWatchlist;
   late int listenerCallCount;
 
   setUp(() {
@@ -36,8 +36,8 @@ void main() {
     mockGetMovieDetail = MockGetMovieDetail();
     mockGetMovieRecommendations = MockGetMovieRecommendations();
     mockGetWatchlistStatus = MockGetWatchListStatus();
-    mockSaveWatchlist = MockSaveWatchlist();
-    mockRemoveWatchlist = MockRemoveWatchlist();
+    mockSaveWatchlist = MockSaveMoviesWatchlist();
+    mockRemoveWatchlist = MockRemoveMoviesWatchlist();
     provider = MovieDetailNotifier(
       getMovieDetail: mockGetMovieDetail,
       getMovieRecommendations: mockGetMovieRecommendations,

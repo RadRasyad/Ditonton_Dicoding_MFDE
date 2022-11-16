@@ -1,7 +1,10 @@
 import 'package:ditonton/data/models/movies/movie_table.dart';
+import 'package:ditonton/data/models/tvseries/tvseries_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movies/movie.dart';
 import 'package:ditonton/domain/entities/movies/movie_detail.dart';
+import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
+import 'package:ditonton/domain/entities/tvseries/tvseries_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -77,6 +80,94 @@ final testMovieTable = MovieTable(
 
 final testMovieMap = {
   'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'title': 'title',
+};
+
+
+final testTvSeries = TvSeries(
+  backdropPath: '/5kkw5RT1OjTAMh3POhjo5LdaACZ.jpg',
+  firstAirDate: '2021-10-12',
+  genreIds: [
+    80,
+    10765
+  ],
+  id: 90462,
+  name: 'Chucky',
+  originCountry: ["US"],
+  originalLanguage: 'en',
+  originalName: 'Chucky',
+  overview: 'After a vintage Chucky doll turns up at a suburban yard sale, an idyllic American town is thrown into chaos as a series of horrifying murders begin to expose the town’s hypocrisies and secrets. Meanwhile, the arrival of enemies — and allies — from Chucky’s past threatens to expose the truth behind the killings, as well as the demon doll’s untold origins.',
+  popularity: 3545.458,
+  posterPath: '/kY0BogCM8SkNJ0MNiHB3VTM86Tz.jpg',
+  voteAverage: 7.9,
+  voteCount: 3466,
+
+);
+
+final testTvSeriesList = [testTvSeries];
+
+final testTvSeriesDetail = TvSeriesDetail(
+    backdropPath: '/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg',
+    genres: [
+      Genre(id: 16, name: 'Animation'),
+      Genre(id: 10765, name: 'Sci-Fi & Fantasy'),
+      Genre(id: 10759, name: 'Action & Adventure'),
+      Genre(id: 18, name: 'Drama')
+    ],
+    id: 94605,
+    numberOfEpisodes: 9,
+    numberOfSeasons: 2,
+    name: 'Arcane',
+    overview: 'Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.',
+    popularity: 98.417,
+    posterPath: '/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg',
+    status: 'Returning Series',
+    voteAverage: 8.7,
+    voteCount: 2676
+);
+
+final testTvSeriesCache = TvSeriesTable(
+  id: 90462,
+  overview:
+  'After a vintage Chucky doll turns up at a suburban yard sale, an idyllic American town is thrown into chaos as a series of horrifying murders begin to expose the town’s hypocrisies and secrets. Meanwhile, the arrival of enemies — and allies — from Chucky’s past threatens to expose the truth behind the killings, as well as the demon doll’s untold origins.',
+  posterPath: '/kY0BogCM8SkNJ0MNiHB3VTM86Tz.jpg',
+  title: 'Chucky',
+);
+
+final testTvSeriesCacheMap = {
+  'id': 90462,
+  'overview':
+  'After a vintage Chucky doll turns up at a suburban yard sale, an idyllic American town is thrown into chaos as a series of horrifying murders begin to expose the town’s hypocrisies and secrets. Meanwhile, the arrival of enemies — and allies — from Chucky’s past threatens to expose the truth behind the killings, as well as the demon doll’s untold origins.',
+  'posterPath': '/kY0BogCM8SkNJ0MNiHB3VTM86Tz.jpg',
+  'title': 'Chucky',
+};
+
+final testTvSeriesFromCache = TvSeries.watchlist(
+  id: 90462,
+  overview:
+  'After a vintage Chucky doll turns up at a suburban yard sale, an idyllic American town is thrown into chaos as a series of horrifying murders begin to expose the town’s hypocrisies and secrets. Meanwhile, the arrival of enemies — and allies — from Chucky’s past threatens to expose the truth behind the killings, as well as the demon doll’s untold origins.',
+  posterPath: '/kY0BogCM8SkNJ0MNiHB3VTM86Tz.jpg',
+  name: 'Chucky',
+);
+
+final testWatchlistTvSeries = TvSeries.watchlist(
+  id: 2,
+  name: 'title',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testTvSeriesTable = MovieTable(
+  id: 2,
+  title: 'title',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testTvSeriesMap = {
+  'id': 2,
   'overview': 'overview',
   'posterPath': 'posterPath',
   'title': 'title',

@@ -1,8 +1,8 @@
+
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/data/datasources/movie_local_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
@@ -19,7 +19,7 @@ void main() {
     test('should return success message when insert to database is success',
             () async {
           // arrange
-          when(mockDatabaseHelper.insertWatchlist(testMovieTable))
+          when(mockDatabaseHelper.insertMoviesWatchlist(testMovieTable))
               .thenAnswer((_) async => 1);
           // act
           final result = await dataSource.insertWatchlist(testMovieTable);
@@ -30,7 +30,7 @@ void main() {
     test('should throw DatabaseException when insert to database is failed',
             () async {
           // arrange
-          when(mockDatabaseHelper.insertWatchlist(testMovieTable))
+          when(mockDatabaseHelper.insertMoviesWatchlist(testMovieTable))
               .thenThrow(Exception());
           // act
           final call = dataSource.insertWatchlist(testMovieTable);
@@ -43,7 +43,7 @@ void main() {
     test('should return success message when remove from database is success',
             () async {
           // arrange
-          when(mockDatabaseHelper.removeWatchlist(testMovieTable))
+          when(mockDatabaseHelper.removeMoviesWatchlist(testMovieTable))
               .thenAnswer((_) async => 1);
           // act
           final result = await dataSource.removeWatchlist(testMovieTable);
@@ -54,7 +54,7 @@ void main() {
     test('should throw DatabaseException when remove from database is failed',
             () async {
           // arrange
-          when(mockDatabaseHelper.removeWatchlist(testMovieTable))
+          when(mockDatabaseHelper.removeMoviesWatchlist(testMovieTable))
               .thenThrow(Exception());
           // act
           final call = dataSource.removeWatchlist(testMovieTable);
@@ -108,12 +108,12 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCache('now playing'));
       verify(mockDatabaseHelper
-          .insertCacheTransaction([testMovieCache], 'now playing'));
+          .insertMovieCacheTransaction([testMovieCache], 'now playing'));
     });
 
     test('should return list of movies from db when data exist', () async {
       // arrange
-      when(mockDatabaseHelper.getCacheMovies('now playing'))
+      when(mockDatabaseHelper.getCache('now playing'))
           .thenAnswer((_) async => [testMovieCacheMap]);
       // act
       final result = await dataSource.getCachedNowPlayingMovies();
@@ -123,7 +123,7 @@ void main() {
 
     test('should throw CacheException when cache data is not exist', () async {
       // arrange
-      when(mockDatabaseHelper.getCacheMovies('now playing'))
+      when(mockDatabaseHelper.getCache('now playing'))
           .thenAnswer((_) async => []);
       // act
       final call = dataSource.getCachedNowPlayingMovies();
