@@ -1,6 +1,5 @@
 
 import 'package:ditonton/common/exception.dart';
-import 'package:ditonton/data/datasources/movie_local_data_source.dart';
 import 'package:ditonton/data/datasources/tvseries_local_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -64,22 +63,22 @@ void main() {
         });
   });
 
-  group('Get Movie Detail By Id', () {
+  group('Get Tv Series Detail By Id', () {
     final tId = 94605;
 
     test('should return Tv Series Detail Table when data is found', () async {
       // arrange
-      when(mockDatabaseHelper.getMovieById(tId))
-          .thenAnswer((_) async => testMovieMap);
+      when(mockDatabaseHelper.getTvseriesById(tId))
+          .thenAnswer((_) async => testTvSeriesMap);
       // act
       final result = await dataSource.getTvSeriesById(tId);
       // assert
-      expect(result, testMovieTable);
+      expect(result, testTvSeriesTable);
     });
 
     test('should return null when data is not found', () async {
       // arrange
-      when(mockDatabaseHelper.getMovieById(tId)).thenAnswer((_) async => null);
+      when(mockDatabaseHelper.getTvseriesById(tId)).thenAnswer((_) async => null);
       // act
       final result = await dataSource.getTvSeriesById(tId);
       // assert
@@ -88,14 +87,14 @@ void main() {
   });
 
   group('get watchlist tv series', () {
-    test('should return list of MovieTable from database', () async {
+    test('should return list of TvSeriesTable from database', () async {
       // arrange
-      when(mockDatabaseHelper.getWatchlistMovies())
-          .thenAnswer((_) async => [testMovieMap]);
+      when(mockDatabaseHelper.getWatchlistTvSeries())
+          .thenAnswer((_) async => [testTvSeriesMap]);
       // act
       final result = await dataSource.getWatchlistTvSeries();
       // assert
-      expect(result, [testMovieTable]);
+      expect(result, [testTvSeriesTable]);
     });
   });
 
