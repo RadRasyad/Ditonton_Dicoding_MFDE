@@ -401,12 +401,14 @@ class MockTvSeriesLocalDataSource extends _i1.Mock
   }
 
   @override
-  _i7.Future<String> insertWatchlist(_i21.TvSeriesTable? tvSeries) =>
-      (super.noSuchMethod(Invocation.method(#insertWatchlist, [tvSeries]),
+  _i7.Future<String> insertTvSeriesWatchlist(_i21.TvSeriesTable? tvSeries) =>
+      (super.noSuchMethod(
+          Invocation.method(#insertTvSeriesWatchlist, [tvSeries]),
           returnValue: _i7.Future<String>.value('')) as _i7.Future<String>);
   @override
-  _i7.Future<String> removeWatchlist(_i21.TvSeriesTable? tvSeries) =>
-      (super.noSuchMethod(Invocation.method(#removeWatchlist, [tvSeries]),
+  _i7.Future<String> removeTvSeriesWatchlist(_i21.TvSeriesTable? tvSeries) =>
+      (super.noSuchMethod(
+          Invocation.method(#removeTvSeriesWatchlist, [tvSeries]),
           returnValue: _i7.Future<String>.value('')) as _i7.Future<String>);
   @override
   _i7.Future<_i21.TvSeriesTable?> getTvSeriesById(int? id) =>

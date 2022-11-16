@@ -126,11 +126,11 @@ class DatabaseHelper {
 
   Future<int> insertTvSeriesWatchlist(TvSeriesTable tvSeries) async {
     final db = await database;
-    final movieJson = tvSeries.toJson();
+    final tvSeriesJson = tvSeries.toJson();
 
-    movieJson['type'] = 'tvseries';
+    tvSeriesJson['type'] = 'tvseries';
 
-    return await db!.insert(_tblWatchlist, movieJson);
+    return await db!.insert(_tblWatchlist, tvSeriesJson);
   }
 
   Future<int> removeTvSeriesWatchlist(TvSeriesTable tvSeries) async {

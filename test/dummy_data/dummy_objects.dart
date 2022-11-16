@@ -165,6 +165,13 @@ final testTvSeriesTable = TvSeriesTable(
   overview: 'overview',
 );
 
+final testTvSeriesTable2 = TvSeriesTable(
+  id: 94605,
+  title: 'Arcane',
+  posterPath: '/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg',
+  overview: 'Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.',
+);
+
 final testTvSeriesMap = {
   'id': 2,
   'overview': 'overview',

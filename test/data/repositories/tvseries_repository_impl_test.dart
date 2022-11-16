@@ -1,5 +1,5 @@
-import 'dart:io';
 
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/common/exception.dart';
@@ -10,7 +10,6 @@ import 'package:ditonton/data/repositories/tvseries_repository_impl.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
@@ -412,7 +411,7 @@ void main() {
   group('save watchlist', () {
     test('should return success message when saving successful', () async {
       // arrange
-      when(mockLocalDataSource.insertWatchlist(testTvSeriesTable))
+      when(mockLocalDataSource.insertTvSeriesWatchlist(testTvSeriesTable2))
           .thenAnswer((_) async => 'Added to Watchlist');
       // act
       final result = await repository.saveTvSeriesWatchlist(testTvSeriesDetail);
@@ -422,7 +421,7 @@ void main() {
 
     test('should return DatabaseFailure when saving unsuccessful', () async {
       // arrange
-      when(mockLocalDataSource.insertWatchlist(testTvSeriesTable))
+      when(mockLocalDataSource.insertTvSeriesWatchlist(testTvSeriesTable2))
           .thenThrow(DatabaseException('Failed to add watchlist'));
       // act
       final result = await repository.saveTvSeriesWatchlist(testTvSeriesDetail);
@@ -434,7 +433,7 @@ void main() {
   group('remove watchlist', () {
     test('should return success message when remove successful', () async {
       // arrange
-      when(mockLocalDataSource.removeWatchlist(testTvSeriesTable))
+      when(mockLocalDataSource.removeTvSeriesWatchlist(testTvSeriesTable2))
           .thenAnswer((_) async => 'Removed from watchlist');
       // act
       final result = await repository.removeTvSeriesWatchlist(testTvSeriesDetail);
@@ -444,7 +443,7 @@ void main() {
 
     test('should return DatabaseFailure when remove unsuccessful', () async {
       // arrange
-      when(mockLocalDataSource.removeWatchlist(testTvSeriesTable))
+      when(mockLocalDataSource.removeTvSeriesWatchlist(testTvSeriesTable2))
           .thenThrow(DatabaseException('Failed to remove watchlist'));
       // act
       final result = await repository.removeTvSeriesWatchlist(testTvSeriesDetail);
@@ -477,4 +476,5 @@ void main() {
       expect(resultList, [testWatchlistTvSeries]);
     });
   });
+
 }
