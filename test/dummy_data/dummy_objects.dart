@@ -1,3 +1,4 @@
+
 import 'package:ditonton/data/models/movies/movie_table.dart';
 import 'package:ditonton/data/models/tvseries/tvseries_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
