@@ -4,8 +4,7 @@ import 'package:ditonton/domain/entities/movies/movie.dart';
 import 'package:ditonton/domain/usecases/movies/get_popular_movies.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-
-import '../../helpers/test_helper.mocks.dart';
+import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late GetPopularMovies usecase;

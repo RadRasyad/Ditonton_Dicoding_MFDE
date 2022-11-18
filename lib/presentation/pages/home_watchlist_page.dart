@@ -16,6 +16,8 @@ import 'package:ditonton/presentation/provider/watchlist_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/utils.dart';
+
 class HomeWatchlistPage extends StatefulWidget {
   static const ROUTE_NAME = '/home_watchlist';
 
@@ -23,7 +25,8 @@ class HomeWatchlistPage extends StatefulWidget {
   _HomeWatchlistPageState createState() => _HomeWatchlistPageState();
 }
 
-class _HomeWatchlistPageState extends State<HomeWatchlistPage> {
+class _HomeWatchlistPageState extends State<HomeWatchlistPage> with RouteAware {
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +34,18 @@ class _HomeWatchlistPageState extends State<HomeWatchlistPage> {
             () => Provider.of<WatchlistNotifier>(context, listen: false)
           ..getWatchlistMovie()
           ..getWatchlistTvSeriess());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  void didPopNext() {
+    Provider.of<WatchlistNotifier>(context, listen: false)
+      ..getWatchlistMovie()
+      ..getWatchlistTvSeriess();
   }
 
   @override
@@ -109,6 +124,12 @@ class _HomeWatchlistPageState extends State<HomeWatchlistPage> {
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
   }
 }
 

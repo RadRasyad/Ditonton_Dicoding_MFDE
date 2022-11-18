@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/presentation/pages/tvseries/now_playing_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/popular_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/search_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/top_rated_tvseries_page.dart';
@@ -54,9 +55,10 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Now Playing',
-                style: kHeading6,
+              _buildSubHeading(
+                title: 'Now Playing',
+                onTap: () =>
+                    Navigator.pushNamed(context, NowPlayingTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.nowPlayingState;
