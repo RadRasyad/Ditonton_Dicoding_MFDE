@@ -1,41 +1,41 @@
 
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/utils.dart';
-import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/home_watchlist_page.dart';
-import 'package:ditonton/presentation/pages/movie/movie_detail_page.dart';
-import 'package:ditonton/presentation/pages/movie/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/movie/popular_movies_page.dart';
-import 'package:ditonton/presentation/pages/movie/search_movie_page.dart';
-import 'package:ditonton/presentation/pages/movie/top_rated_movies_page.dart';
-import 'package:ditonton/presentation/pages/movie/watchlist_movies_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/home_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/now_playing_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/popular_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/search_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/top_rated_tvseries_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/tvseries_detail_page.dart';
-import 'package:ditonton/presentation/pages/tvseries/watchlist_tvseries_page.dart';
-import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/now_playing_tvseries_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/popular_tvseries_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/top_rated_tvseries_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_list_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/tvseries_search_notifier.dart';
-import 'package:ditonton/presentation/provider/tvshows/watchlist_tvseries_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_notifier.dart';
-import 'package:ditonton/presentation/widgets/custom_drawer.dart';
+import 'package:about/about.dart';
+import 'package:core/core.dart';
+import 'package:core/presentation/pages/home_watchlist_page.dart';
+import 'package:core/presentation/pages/movie/home_movie_page.dart';
+import 'package:core/presentation/pages/movie/movie_detail_page.dart';
+import 'package:core/presentation/pages/movie/popular_movies_page.dart';
+import 'package:core/presentation/pages/movie/search_movie_page.dart';
+import 'package:core/presentation/pages/movie/top_rated_movies_page.dart';
+import 'package:core/presentation/pages/movie/watchlist_movies_page.dart';
+import 'package:core/presentation/pages/tvseries/home_tvseries_page.dart';
+import 'package:core/presentation/pages/tvseries/now_playing_tvseries_page.dart';
+import 'package:core/presentation/pages/tvseries/popular_tvseries_page.dart';
+import 'package:core/presentation/pages/tvseries/search_tvseries_page.dart';
+import 'package:core/presentation/pages/tvseries/top_rated_tvseries_page.dart';
+import 'package:core/presentation/pages/tvseries/tvseries_detail_page.dart';
+import 'package:core/presentation/pages/tvseries/watchlist_tvseries_page.dart';
+import 'package:core/presentation/provider/movies/movie_detail_notifier.dart';
+import 'package:core/presentation/provider/movies/movie_list_notifier.dart';
+import 'package:core/presentation/provider/movies/movie_search_notifier.dart';
+import 'package:core/presentation/provider/movies/popular_movies_notifier.dart';
+import 'package:core/presentation/provider/movies/top_rated_movies_notifier.dart';
+import 'package:core/presentation/provider/movies/watchlist_movie_notifier.dart';
+import 'package:core/presentation/provider/tvshows/now_playing_tvseries_notifier.dart';
+import 'package:core/presentation/provider/tvshows/popular_tvseries_notifier.dart';
+import 'package:core/presentation/provider/tvshows/top_rated_tvseries_notifier.dart';
+import 'package:core/presentation/provider/tvshows/tvseries_detail_notifier.dart';
+import 'package:core/presentation/provider/tvshows/tvseries_list_notifier.dart';
+import 'package:core/presentation/provider/tvshows/tvseries_search_notifier.dart';
+import 'package:core/presentation/provider/tvshows/watchlist_tvseries_notifier.dart';
+import 'package:core/presentation/provider/watchlist_notifier.dart';
+import 'package:core/presentation/widgets/custom_drawer.dart';
+import 'package:core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
-
-import 'presentation/provider/movies/movie_list_notifier.dart';
-import 'presentation/provider/movies/top_rated_movies_notifier.dart';
+import 'package:core/utils/routes.dart';
 
 void main() {
   di.init();
@@ -108,17 +108,17 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case '/home':
               return MaterialPageRoute(builder: (_) => HomeMoviePage());
-            case PopularMoviesPage.ROUTE_NAME:
+            case POPULAR_MOVIES_ROUTE:
               return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-            case TopRatedMoviesPage.ROUTE_NAME:
+            case TOP_RATED_ROUTE:
               return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
-            case MovieDetailPage.ROUTE_NAME:
+            case MOVIE_DETAIL_ROUTE:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case SearchMoviePage.ROUTE_NAME:
+            case SEARCH_MOVIE_ROUTE:
               return CupertinoPageRoute(builder: (_) => SearchMoviePage());
             case WatchlistMoviesPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());

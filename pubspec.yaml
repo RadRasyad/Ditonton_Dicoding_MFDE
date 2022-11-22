@@ -44,6 +44,11 @@ dependencies:
       url: https://github.com/chornthorn/data_connection_checker.git
       ref: master
 
+  about:
+    path: about
+  core:
+    path: core
+
 dev_dependencies:
   mockito: ^5.0.8
   build_runner: ^2.0.4

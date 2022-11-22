@@ -9,7 +9,7 @@ import 'dart:typed_data' as _i26;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i8;
-import 'package:ditonton/common/network_info.dart' as _i24;
+import '../../core/lib/utils/network_info.dart' as _i24;
 import 'package:ditonton/data/datasources/db/database_helper.dart' as _i22;
 import 'package:ditonton/data/datasources/movie_local_data_source.dart' as _i13;
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart'
