@@ -17,7 +17,6 @@ import 'package:core/domain/usecases/movies/get_top_rated_movies.dart';
 import 'package:core/domain/usecases/movies/get_watchlist_movies.dart';
 import 'package:core/domain/usecases/movies/remove_movies_watchlist.dart';
 import 'package:core/domain/usecases/movies/save_movies_watchlist.dart';
-import 'package:core/domain/usecases/movies/search_movies.dart';
 import 'package:core/domain/usecases/tvshows/get_now_playing_tvseries.dart';
 import 'package:core/domain/usecases/tvshows/get_popular_tvseries.dart';
 import 'package:core/domain/usecases/tvshows/get_top_rated_tvseries.dart';
@@ -27,10 +26,8 @@ import 'package:core/domain/usecases/tvshows/get_tvseries_watchlist_status.dart'
 import 'package:core/domain/usecases/tvshows/get_watchlist_tvseries.dart';
 import 'package:core/domain/usecases/tvshows/remove_tvseries_watchlist.dart';
 import 'package:core/domain/usecases/tvshows/save_tvseries_watchlist.dart';
-import 'package:core/domain/usecases/tvshows/search_movies.dart';
 import 'package:core/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movies/movie_list_notifier.dart';
-import 'package:core/presentation/provider/movies/movie_search_notifier.dart';
 import 'package:core/presentation/provider/movies/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/movies/top_rated_movies_notifier.dart';
 import 'package:core/presentation/provider/movies/watchlist_movie_notifier.dart';
@@ -39,13 +36,13 @@ import 'package:core/presentation/provider/tvshows/popular_tvseries_notifier.dar
 import 'package:core/presentation/provider/tvshows/top_rated_tvseries_notifier.dart';
 import 'package:core/presentation/provider/tvshows/tvseries_detail_notifier.dart';
 import 'package:core/presentation/provider/tvshows/tvseries_list_notifier.dart';
-import 'package:core/presentation/provider/tvshows/tvseries_search_notifier.dart';
 import 'package:core/presentation/provider/tvshows/watchlist_tvseries_notifier.dart';
 import 'package:core/presentation/provider/watchlist_notifier.dart';
 import 'package:core/utils/network_info.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:search/search.dart';
 
 final locator = GetIt.instance;
 

@@ -1,6 +1,6 @@
 
 import 'package:core/domain/entities/tvseries/tvseries.dart';
-import 'package:core/domain/usecases/tvshows/search_movies.dart';
+import '../../domain/usecases/search_tvseries.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/foundation.dart';
 

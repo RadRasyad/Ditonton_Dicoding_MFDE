@@ -28,6 +28,8 @@ dependencies:
 
   about:
     path: ../about
+  search:
+    path: ../search
 
   flutter:
     sdk: flutter

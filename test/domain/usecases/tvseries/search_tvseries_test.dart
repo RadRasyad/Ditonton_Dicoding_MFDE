@@ -2,8 +2,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/domain/entities/movies/movie.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
-import 'package:ditonton/domain/usecases/movies/search_movies.dart';
-import 'package:ditonton/domain/usecases/tvshows/search_movies.dart';
+import 'package:ditonton/domain/usecases/movies/search_tvseries.dart';
+import 'package:ditonton/domain/usecases/tvshows/search_tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';

@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tvseries/tvseries.dart';
 import 'package:core/presentation/pages/tvseries/now_playing_tvseries_page.dart';
 import 'package:core/presentation/pages/tvseries/popular_tvseries_page.dart';
-import 'package:core/presentation/pages/tvseries/search_tvseries_page.dart';
 import 'package:core/presentation/pages/tvseries/top_rated_tvseries_page.dart';
 import 'package:core/presentation/pages/tvseries/tvseries_detail_page.dart';
 import 'package:core/presentation/provider/tvshows/tvseries_list_notifier.dart';
@@ -12,6 +11,7 @@ import 'package:core/utils/constants.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:search/presentation/pages/search_tvseries_page.dart';
 
 
 class HomeTvSeriesPage extends StatefulWidget {

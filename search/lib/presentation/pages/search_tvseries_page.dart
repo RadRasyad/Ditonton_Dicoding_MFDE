@@ -1,10 +1,10 @@
 
-import 'package:core/presentation/provider/tvshows/tvseries_search_notifier.dart';
 import 'package:core/presentation/widgets/tvseries_card_list.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:search/presentation/provider/tvseries_search_notifier.dart';
 
 class SearchTvSeriesPage extends StatelessWidget {
   static const ROUTE_NAME = '/search_tvseries';

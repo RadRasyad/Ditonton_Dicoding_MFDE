@@ -1,5 +1,5 @@
 
-import 'package:core/presentation/provider/movies/movie_search_notifier.dart';
+import '../provider/movie_search_notifier.dart';
 import 'package:core/presentation/widgets/movie_card_list.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';

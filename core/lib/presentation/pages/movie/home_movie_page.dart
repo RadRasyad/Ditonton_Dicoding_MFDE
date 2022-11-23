@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/movies/movie.dart';
 import 'package:core/presentation/pages/movie/movie_detail_page.dart';
 import 'package:core/presentation/pages/movie/popular_movies_page.dart';
-import 'package:core/presentation/pages/movie/search_movie_page.dart';
+import 'package:search/presentation/pages/search_movie_page.dart';
 import 'package:core/presentation/pages/movie/top_rated_movies_page.dart';
 import 'package:core/presentation/provider/movies/movie_list_notifier.dart';
 import 'package:core/styles/text_styles.dart';
