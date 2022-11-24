@@ -2,6 +2,7 @@
 import 'package:about/about.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/pages/home_watchlist_page.dart';
+import 'package:search/presentation/bloc/search_movie_bloc.dart';
 import 'package:core/presentation/pages/movie/home_movie_page.dart';
 import 'package:core/presentation/pages/movie/movie_detail_page.dart';
 import 'package:core/presentation/pages/movie/popular_movies_page.dart';
@@ -26,6 +27,7 @@ import 'package:core/presentation/provider/tvshows/tvseries_list_notifier.dart';
 import 'package:core/presentation/provider/tvshows/watchlist_tvseries_notifier.dart';
 import 'package:core/presentation/provider/watchlist_notifier.dart';
 import 'package:core/presentation/widgets/custom_drawer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +52,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieSearchNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<SearchMovieBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedMoviesNotifier>(),
