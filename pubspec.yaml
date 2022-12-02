@@ -51,6 +51,10 @@ dependencies:
     path: core
   search:
     path: search
+  movies:
+    path: movies
+  tvseries:
+    path: tvseries
 
 dev_dependencies:
   mockito: ^5.0.8

@@ -20,6 +20,10 @@ dependencies:
 
   core:
     path: ../core
+  movies:
+    path: ../movies
+  tvseries:
+    path: ../tvseries
 
 dev_dependencies:
   flutter_lints: ^2.0.0

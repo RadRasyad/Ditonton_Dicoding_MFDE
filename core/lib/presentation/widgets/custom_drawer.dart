@@ -1,7 +1,5 @@
 
-import 'package:about/about_page.dart';
-import 'package:core/presentation/pages/home_watchlist_page.dart';
-import 'package:core/presentation/pages/tvseries/home_tvseries_page.dart';
+import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -25,7 +23,7 @@ class _CustomDrawerState extends State<CustomDrawer>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 250),
+      duration: const Duration(milliseconds: 250),
     );
   }
 
@@ -33,40 +31,40 @@ class _CustomDrawerState extends State<CustomDrawer>
     return Container(
       child: Column(
         children: [
-          UserAccountsDrawerHeader(
+          const UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
               backgroundImage: AssetImage('assets/circle-g.png'),
             ),
             accountName: Text('Ditonton'),
             accountEmail: Text('ditonton@dicoding.com'),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.movie),
             title: Text('Movies'),
           ),
           ListTile(
-            leading: Icon(Icons.tv),
-            title: Text('TV Series'),
+            leading: const Icon(Icons.tv),
+            title: const Text('TV Series'),
             onTap: () {
-              Navigator.pushNamed(context, HomeTvSeriesPage.ROUTE_NAME);
+              Navigator.pushNamed(context, HOME_TVSERIES_ROUTE);
               _animationController.reverse();
             },
           ),
+          // ListTile(
+          //   leading: const Icon(Icons.save_alt),
+          //   title: const Text('Watchlist'),
+          //   onTap: () {
+          //     Navigator.pushNamed(context, HOME_WATCHLIST_ROUTE);
+          //     _animationController.reverse();
+          //   },
+          // ),
           ListTile(
-            leading: Icon(Icons.save_alt),
-            title: Text('Watchlist'),
             onTap: () {
-              Navigator.pushNamed(context, HomeWatchlistPage.ROUTE_NAME);
+              Navigator.pushNamed(context, ABOUT_ROUTE);
               _animationController.reverse();
             },
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
-              _animationController.reverse();
-            },
-            leading: Icon(Icons.info_outline),
-            title: Text('About'),
+            leading: const Icon(Icons.info_outline),
+            title: const Text('About'),
           ),
         ],
       ),

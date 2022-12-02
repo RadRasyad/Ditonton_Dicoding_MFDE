@@ -30,6 +30,10 @@ dependencies:
     path: ../about
   search:
     path: ../search
+  movies:
+    path: ../movies
+  tvseries:
+    path: ../tvseries
 
   flutter:
     sdk: flutter
