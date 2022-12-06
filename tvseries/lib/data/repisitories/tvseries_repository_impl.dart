@@ -32,6 +32,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
+      } on TlsException {
+        return Left(SSLFailure('FAILED_VERIFY_CERTIFICATE'));
       }
     } else {
       try {
@@ -52,6 +54,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return Left(SSLFailure('FAILED_VERIFY_CERTIFICATE'));
     }
   }
 
@@ -64,6 +68,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return Left(SSLFailure('FAILED_VERIFY_CERTIFICATE'));
     }
   }
 
@@ -76,6 +82,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return Left(SSLFailure('FAILED_VERIFY_CERTIFICATE'));
     }
   }
 
@@ -88,6 +96,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return Left(SSLFailure('FAILED_VERIFY_CERTIFICATE'));
     }
   }
 
@@ -100,6 +110,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return Left(SSLFailure('FAILED_VERIFY_CERTIFICATE'));
     }
   }
 
