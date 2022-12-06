@@ -10,7 +10,7 @@ import 'package:ditonton/data/repositories/tvseries_repository_impl.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import '../../dummy_data/dummy_objects.dart';
+import '../../../movies/test/dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

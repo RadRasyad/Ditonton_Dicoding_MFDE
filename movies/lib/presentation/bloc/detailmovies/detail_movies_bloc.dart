@@ -14,7 +14,6 @@ part 'detail_movies_event.dart';
 
 class MoviesDetailBloc extends Bloc<DetailMoviesEvent, DetailMoviesState> {
   final GetMovieDetail getMovieDetail;
-  final GetMovieRecommendations getMovieRecommendations;
   final GetWatchListStatus getWatchListStatus;
   final SaveMoviesWatchlist saveWatchlist;
   final RemoveMoviesWatchlist removeWatchlist;
@@ -24,7 +23,6 @@ class MoviesDetailBloc extends Bloc<DetailMoviesEvent, DetailMoviesState> {
 
   MoviesDetailBloc({
     required this.getMovieDetail,
-    required this.getMovieRecommendations,
     required this.getWatchListStatus,
     required this.saveWatchlist,
     required this.removeWatchlist,

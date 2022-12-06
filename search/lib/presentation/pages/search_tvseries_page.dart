@@ -37,11 +37,11 @@ class SearchTvSeriesPage extends StatelessWidget {
             ),
             BlocBuilder<SearchTvSeriesBloc, SearchTvSeriesState>(
               builder: (context, state) {
-                if (state is SearchLoading) {
+                if (state is SearchTLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is SearchHasData) {
+                } else if (state is SearchTHasData) {
                   final result = state.result;
                   return Expanded(
                     child: ListView.builder(
@@ -53,7 +53,7 @@ class SearchTvSeriesPage extends StatelessWidget {
                       itemCount: result.length,
                     ),
                   );
-                } else if (state is SearchError) {
+                } else if (state is SearchTError) {
                   return Expanded(
                     child: Center(
                       child: Text(state.message),

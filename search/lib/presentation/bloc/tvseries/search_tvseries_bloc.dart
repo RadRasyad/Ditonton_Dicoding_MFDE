@@ -11,19 +11,19 @@ part 'search_tvseries_state.dart';
 class SearchTvSeriesBloc extends Bloc<SearchTvSeriesEvent, SearchTvSeriesState> {
   final SearchTvSeries _searchtvseries;
 
-  SearchTvSeriesBloc(this._searchtvseries) : super(SearchEmpty()) {
-    on<OnQueryChanged>((event, emit) async {
+  SearchTvSeriesBloc(this._searchtvseries) : super(SearchTEmpty()) {
+    on<OnTQueryChanged>((event, emit) async {
       final query = event.query;
 
-      emit(SearchLoading());
+      emit(SearchTLoading());
       final result = await _searchtvseries.execute(query);
 
       result.fold(
             (failure) {
-          emit(SearchError(failure.message));
+          emit(SearchTError(failure.message));
         },
             (data) {
-          emit(SearchHasData(data));
+          emit(SearchTHasData(data));
         },
       );
     }, transformer: debounce(const Duration(milliseconds: 500)));

@@ -10,7 +10,6 @@ import 'package:core/core.dart';
 import 'package:core/utils/network_info.dart';
 import 'package:tvseries/domain/entities/tvseries_detail.dart';
 
-
 class TvSeriesRepositoryImpl implements TvSeriesRepository {
   final TvSeriesRemoteDataSource remoteDataSource;
   final TvSeriesLocalDataSource localDataSource;
