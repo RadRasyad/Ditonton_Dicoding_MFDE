@@ -2,7 +2,6 @@
 import 'package:about/about.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/pages/home_watchlist_page.dart';
-import 'package:core/presentation/provider/watchlist_notifier.dart';
 import 'package:core/presentation/widgets/custom_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/utils/utils.dart';
@@ -19,8 +18,8 @@ import 'package:core/utils/routes.dart';
 import 'package:search/presentation/bloc/movies/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/tvseries/search_tvseries_bloc.dart';
 import 'package:search/search.dart';
-import 'package:tvseries/presentation/bloc/bloc/detailtvseries/detail_tvseries_bloc.dart';
-import 'package:tvseries/presentation/bloc/bloc/tvseries/tvseries_bloc.dart';
+import 'package:tvseries/presentation/bloc/detailtvseries/detail_tvseries_bloc.dart';
+import 'package:tvseries/presentation/bloc/tvseries/tvseries_bloc.dart';
 import 'package:movies/presentation/pages/home_movie_page.dart';
 import 'package:movies/presentation/pages/watchlist_movies_page.dart';
 import 'package:tvseries/presentation/pages/home_tvseries_page.dart';
@@ -45,6 +44,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.locator<MoviesDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<RecommendationMoviesBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<SearchMovieBloc>(),
@@ -77,11 +79,11 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<PopularTvSeriesBloc>(),
         ),
         BlocProvider(
+          create: (_) => di.locator<RecommendationTvSeriesBloc>(),
+        ),
+        BlocProvider(
           create: (_) => di.locator<WatchlistTvSeriesBloc>(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (_) => di.locator<WatchlistNotifier>(),
-        // ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -133,8 +135,8 @@ class MyApp extends StatelessWidget {
               return CupertinoPageRoute(builder: (_) => SearchTvSeriesPage());
             case WATCHLIST_TVSERIES_ROUTE:
               return MaterialPageRoute(builder: (_) => WatchlistTvSeriesPage());
-            // case HOME_WATCHLIST_ROUTE:
-            //   return MaterialPageRoute(builder: (_) => HomeWatchlistPage());
+            case HOME_WATCHLIST_ROUTE:
+              return MaterialPageRoute(builder: (_) => HomeWatchlistPage());
             case ABOUT_ROUTE:
               return MaterialPageRoute(builder: (_) => AboutPage());
             default:

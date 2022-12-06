@@ -44,11 +44,11 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<WatchlistMoviesBloc, MoviesState>(
           builder: (context, state) {
-            if (state is LoadingData) {
+            if (state is MLoadingData) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is LoadedData) {
+            } else if (state is MLoadedData) {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final movie = state.result[index];
@@ -56,7 +56,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
                 },
                 itemCount: state.result.length,
               );
-            } else if (state is ErrorData){
+            } else if (state is MErrorData){
               return Center(
                 key: const Key('error_message'),
                 child: Text(state.message),

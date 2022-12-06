@@ -10,7 +10,6 @@ import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
 
 class MovieDetailPage extends StatefulWidget {
   static const ROUTE_NAME = '/detail';
@@ -28,12 +27,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     super.initState();
     Future.microtask(() {
       context
-          .read<RecommendationMoviesBloc>()
-          .add(FetchMovieDataWithId(widget.id));
-      context
           .read<MoviesDetailBloc>()
           .add(FetchMovieDetailDataWithId(widget.id));
       context.read<MoviesDetailBloc>().add(LoadWatchlistStatus(widget.id));
+      context
+          .read<RecommendationMoviesBloc>()
+          .add(FetchMovieDataWithId(widget.id));
     });
   }
 
@@ -189,11 +188,11 @@ class DetailContent extends StatelessWidget {
                             ),
                             BlocBuilder<RecommendationMoviesBloc, MoviesState>(
                               builder: (context, state) {
-                                if (state is LoadingData) {
+                                if (state is MLoadingData) {
                                   return const Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                } else if (state is LoadedData) {
+                                } else if (state is MLoadedData) {
                                   final result = state.result;
                                   return SizedBox(
                                     height: 150,

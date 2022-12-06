@@ -50,14 +50,14 @@ class _CustomDrawerState extends State<CustomDrawer>
               _animationController.reverse();
             },
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.save_alt),
-          //   title: const Text('Watchlist'),
-          //   onTap: () {
-          //     Navigator.pushNamed(context, HOME_WATCHLIST_ROUTE);
-          //     _animationController.reverse();
-          //   },
-          // ),
+          ListTile(
+            leading: const Icon(Icons.save_alt),
+            title: const Text('Watchlist'),
+            onTap: () {
+              Navigator.pushNamed(context, HOME_WATCHLIST_ROUTE);
+              _animationController.reverse();
+            },
+          ),
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, ABOUT_ROUTE);

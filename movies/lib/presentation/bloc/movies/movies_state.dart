@@ -7,23 +7,23 @@ abstract class MoviesState extends Equatable {
   List<Object> get props => [];
 }
 
-class EmptyData extends MoviesState {}
+class MEmptyData extends MoviesState {}
 
-class LoadingData extends MoviesState {}
+class MLoadingData extends MoviesState {}
 
-class ErrorData extends MoviesState {
+class MErrorData extends MoviesState {
   final String message;
 
-  const ErrorData(this.message);
+  const MErrorData(this.message);
 
   @override
   List<Object> get props => [message];
 }
 
-class LoadedData extends MoviesState {
+class MLoadedData extends MoviesState {
   final List<Movie> result;
 
-  const LoadedData(this.result);
+  const MLoadedData(this.result);
 
   @override
   List<Object> get props => [result];

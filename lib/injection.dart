@@ -1,6 +1,5 @@
 
 import 'package:core/data/datasources/db/database_helper.dart';
-import 'package:core/presentation/provider/watchlist_notifier.dart';
 import 'package:core/utils/network_info.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
@@ -36,8 +35,8 @@ import 'package:tvseries/domain/usecases/get_tvseries_watchlist_status.dart';
 import 'package:tvseries/domain/usecases/get_watchlist_tvseries.dart';
 import 'package:tvseries/domain/usecases/remove_tvseries_watchlist.dart';
 import 'package:tvseries/domain/usecases/save_tvseries_watchlist.dart';
-import 'package:tvseries/presentation/bloc/bloc/detailtvseries/detail_tvseries_bloc.dart';
-import 'package:tvseries/presentation/bloc/bloc/tvseries/tvseries_bloc.dart';
+import 'package:tvseries/presentation/bloc/detailtvseries/detail_tvseries_bloc.dart';
+import 'package:tvseries/presentation/bloc/tvseries/tvseries_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -69,6 +68,11 @@ void init() {
   );
   locator.registerFactory(
         () => TopRatedMoviesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+        () => RecommendationMoviesBloc(
       locator(),
     ),
   );
@@ -108,16 +112,15 @@ void init() {
     ),
   );
   locator.registerFactory(
+        () => RecommendationTvSeriesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
         () => WatchlistTvSeriesBloc(
           locator(),
     ),
   );
-  // locator.registerFactory(
-  //       () => WatchlistNotifier(
-  //         getWatchlistMovies: locator(),
-  //         getWatchlistTvSeries: locator(),
-  //   ),
-  // );
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));

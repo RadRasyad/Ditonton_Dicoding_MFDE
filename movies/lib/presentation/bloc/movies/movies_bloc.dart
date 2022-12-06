@@ -14,17 +14,17 @@ part 'movies_state.dart';
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetNowPlayingMovies _getNowPlayingMovies;
 
-  MoviesBloc(this._getNowPlayingMovies) : super(EmptyData()) {
+  MoviesBloc(this._getNowPlayingMovies) : super(MEmptyData()) {
     on<FetchMoviesData>((event, emit) async {
-      emit(LoadingData());
+      emit(MLoadingData());
       final result = await _getNowPlayingMovies.execute();
 
       result.fold(
             (failure) {
-          emit(ErrorData(failure.message));
+          emit(MErrorData(failure.message));
         },
             (data) {
-          emit(LoadedData(data));
+          emit(MLoadedData(data));
         },
       );
     });
@@ -33,17 +33,17 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
 class PopularMoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetPopularMovies _getPopularMovies;
-  PopularMoviesBloc(this._getPopularMovies) : super(EmptyData()) {
+  PopularMoviesBloc(this._getPopularMovies) : super(MEmptyData()) {
     on<FetchMoviesData>((event, emit) async {
-      emit(LoadingData());
+      emit(MLoadingData());
       final result = await _getPopularMovies.execute();
 
       result.fold(
             (failure) {
-          emit(ErrorData(failure.message));
+          emit(MErrorData(failure.message));
         },
             (data) {
-          emit(LoadedData(data));
+          emit(MLoadedData(data));
         },
       );
     });
@@ -52,17 +52,17 @@ class PopularMoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
 class TopRatedMoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetTopRatedMovies _getTopRatedMovies;
-  TopRatedMoviesBloc(this._getTopRatedMovies) : super(EmptyData()) {
+  TopRatedMoviesBloc(this._getTopRatedMovies) : super(MEmptyData()) {
     on<FetchMoviesData>((event, emit) async {
-      emit(LoadingData());
+      emit(MLoadingData());
       final result = await _getTopRatedMovies.execute();
 
       result.fold(
             (failure) {
-          emit(ErrorData(failure.message));
+          emit(MErrorData(failure.message));
         },
             (data) {
-          emit(LoadedData(data));
+          emit(MLoadedData(data));
         },
       );
     });
@@ -71,17 +71,17 @@ class TopRatedMoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
 class WatchlistMoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetWatchlistMovies _getWatchlistMovies;
-  WatchlistMoviesBloc(this._getWatchlistMovies) : super(EmptyData()) {
+  WatchlistMoviesBloc(this._getWatchlistMovies) : super(MEmptyData()) {
     on<FetchMoviesData>((event, emit) async {
-      emit(LoadingData());
+      emit(MLoadingData());
       final result = await _getWatchlistMovies.execute();
 
       result.fold(
             (failure) {
-          emit(ErrorData(failure.message));
+          emit(MErrorData(failure.message));
         },
             (data) {
-          emit(LoadedData(data));
+          emit(MLoadedData(data));
         },
       );
     });
@@ -93,18 +93,18 @@ class RecommendationMoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
   RecommendationMoviesBloc(
       this._getMovieRecommendations,
-      ) : super(EmptyData()) {
+      ) : super(MEmptyData()) {
     on<FetchMovieDataWithId>((event, emit) async {
       final id = event.id;
-      emit(LoadingData());
+      emit(MLoadingData());
       final result = await _getMovieRecommendations.execute(id);
 
       result.fold(
             (failure) {
-          emit(ErrorData(failure.message));
+          emit(MErrorData(failure.message));
         },
             (data) {
-          emit(LoadedData(data));
+          emit(MLoadedData(data));
         },
       );
     });
