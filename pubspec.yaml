@@ -57,6 +57,8 @@ dependencies:
     path: tvseries
 
 dev_dependencies:
+  mocktail: ^0.3.0
+  test_cov_console: ^0.2.2
   mockito: ^5.0.8
   build_runner: ^2.0.4
   flutter_test:

@@ -89,10 +89,9 @@ void init() {
   locator.registerFactory(
         () => TvSeriesDetailBloc(
       getTvSeriesDetail: locator(),
-      getTvSeriesRecommendations: locator(),
       getTvSeriesWatchListStatus: locator(),
-      saveWatchlist: locator(),
-      removeWatchlist: locator(),
+      saveTWatchlist: locator(),
+      removeTWatchlist: locator(),
     ),
   );
   locator.registerFactory(
