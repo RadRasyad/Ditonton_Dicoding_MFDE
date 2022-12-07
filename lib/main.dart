@@ -3,6 +3,10 @@ import 'package:about/about.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/pages/home_watchlist_page.dart';
 import 'package:core/presentation/widgets/custom_drawer.dart';
+import 'package:core/utils/sllpinning.dart';
+import 'package:ditonton/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,8 +33,15 @@ import 'package:tvseries/presentation/pages/top_rated_tvseries_page.dart';
 import 'package:tvseries/presentation/pages/tvseries_detail_page.dart';
 import 'package:tvseries/presentation/pages/watchlist_tvseries_page.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   di.init();
+  await HttpSSLPinning.init();
   runApp(MyApp());
 }
 

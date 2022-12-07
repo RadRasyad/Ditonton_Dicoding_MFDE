@@ -1,5 +1,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/presentation/bloc/movies/movies_bloc.dart';
 import 'package:movies/presentation/pages/popular_movies_page.dart';
