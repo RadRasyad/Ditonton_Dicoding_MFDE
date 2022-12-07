@@ -7,8 +7,8 @@ import 'package:mockito/mockito.dart';
 import 'package:movies/data/datasources/movie_remote_data_source.dart';
 import 'package:movies/data/model/movie_detail_model.dart';
 import 'package:movies/data/model/movie_response.dart';
-import '../../../../test/json_reader.dart';
 import '../../helpers/movies_test_helper.mocks.dart';
+import '../../json_reader.dart';
 
 void main() {
   const API_KEY = 'api_key=2174d146bb9c0eab47529b2e77d6b526';

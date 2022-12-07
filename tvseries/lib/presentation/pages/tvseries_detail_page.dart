@@ -32,7 +32,7 @@ class TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
       context
           .read<TvSeriesDetailBloc>()
           .add(FetchTvSeriesDetailDataWithId(widget.id));
-      context.read<TvSeriesDetailBloc>().add(LoadWatchlistStatus(widget.id));
+      context.read<TvSeriesDetailBloc>().add(TLoadWatchlistStatus(widget.id));
     });
   }
 
@@ -65,11 +65,11 @@ class TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
               currentState.watchlistMessage != '';
         },
         builder: (context, state) {
-          if (state.state == RequestState.Loading) {
+          if (state.tstate == RequestState.Loading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state.state == RequestState.Loaded) {
+          } else if (state.tstate == RequestState.Loaded) {
             final tvSeries = state.tvSeriesDetail!;
             final status = state.isAddedToWatchlist;
             return SafeArea(
@@ -139,11 +139,11 @@ class DetailContent extends StatelessWidget {
                                 if (!isAddedWatchlist) {
                                   context
                                       .read<TvSeriesDetailBloc>()
-                                      .add(AddWatchlist(tvSeries));
+                                      .add(TAddWatchlist(tvSeries));
                                 } else {
                                   context
                                       .read<TvSeriesDetailBloc>()
-                                      .add(RemoveWatchlist(tvSeries));
+                                      .add(TRemoveWatchlist(tvSeries));
                                 }
                               },
                               child: Row(

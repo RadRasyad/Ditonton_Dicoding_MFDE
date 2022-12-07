@@ -14,20 +14,18 @@ part 'detail_tvseries_event.dart';
 
 class TvSeriesDetailBloc extends Bloc<DetailTvSeriesEvent, DetailTvSeriesState> {
   final GetTvSeriesDetail getTvSeriesDetail;
-  final GetTvSeriesRecommendations getTvSeriesRecommendations;
   final GetTvSeriesWatchListStatus getTvSeriesWatchListStatus;
-  final SaveTvSeriesWatchlist saveWatchlist;
-  final RemoveTvSeriesWatchlist removeWatchlist;
+  final SaveTvSeriesWatchlist saveTWatchlist;
+  final RemoveTvSeriesWatchlist removeTWatchlist;
 
   static const watchlistAddSuccessMessage = 'Added to Watchlist';
   static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
 
   TvSeriesDetailBloc({
     required this.getTvSeriesDetail,
-    required this.getTvSeriesRecommendations,
     required this.getTvSeriesWatchListStatus,
-    required this.saveWatchlist,
-    required this.removeWatchlist,
+    required this.saveTWatchlist,
+    required this.removeTWatchlist,
   }) : super(DetailTvSeriesState.initial()) {
     on<FetchTvSeriesDetailDataWithId>((event, emit) async {
       emit(state.copyWith(state: RequestState.Loading));
@@ -46,8 +44,8 @@ class TvSeriesDetailBloc extends Bloc<DetailTvSeriesEvent, DetailTvSeriesState> 
       );
     });
 
-    on<AddWatchlist>((event, emit) async {
-      final result = await saveWatchlist.execute(event.detailTvSeries);
+    on<TAddWatchlist>((event, emit) async {
+      final result = await saveTWatchlist.execute(event.detailTvSeries);
 
       result.fold((failure) {
         emit(state.copyWith(watchlistMessage: failure.message));
@@ -55,10 +53,10 @@ class TvSeriesDetailBloc extends Bloc<DetailTvSeriesEvent, DetailTvSeriesState> 
         emit(state.copyWith(watchlistMessage: successMessage));
       });
 
-      add(LoadWatchlistStatus(event.detailTvSeries.id));
+      add(TLoadWatchlistStatus(event.detailTvSeries.id));
     });
-    on<RemoveWatchlist>((event, emit) async {
-      final result = await removeWatchlist.execute(event.tvSeriesDetail);
+    on<TRemoveWatchlist>((event, emit) async {
+      final result = await removeTWatchlist.execute(event.tvSeriesDetail);
 
       result.fold((failure) {
         emit(state.copyWith(watchlistMessage: failure.message));
@@ -66,9 +64,9 @@ class TvSeriesDetailBloc extends Bloc<DetailTvSeriesEvent, DetailTvSeriesState> 
         emit(state.copyWith(watchlistMessage: successMessage));
       });
 
-      add(LoadWatchlistStatus(event.tvSeriesDetail.id));
+      add(TLoadWatchlistStatus(event.tvSeriesDetail.id));
     });
-    on<LoadWatchlistStatus>((event, emit) async {
+    on<TLoadWatchlistStatus>((event, emit) async {
       final result = await getTvSeriesWatchListStatus.execute(event.id);
       emit(state.copyWith(isAddedToWatchlist: result));
     });

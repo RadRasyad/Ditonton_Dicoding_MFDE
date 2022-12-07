@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movies/data/model/movie_model.dart';
 import 'package:movies/data/model/movie_response.dart';
-import '../../../../test/json_reader.dart';
+import '../../json_reader.dart';
 
 void main() {
   final tMovieModel = MovieModel(

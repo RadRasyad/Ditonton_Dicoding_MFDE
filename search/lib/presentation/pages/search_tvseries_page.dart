@@ -21,7 +21,7 @@ class SearchTvSeriesPage extends StatelessWidget {
           children: [
             TextField(
               onSubmitted: (query) {
-                context.read<SearchTvSeriesBloc>().add(OnQueryChanged(query));
+                context.read<SearchTvSeriesBloc>().add(OnTQueryChanged(query));
               },
               decoration: const InputDecoration(
                 hintText: 'Search title',

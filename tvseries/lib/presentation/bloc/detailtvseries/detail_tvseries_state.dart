@@ -5,13 +5,13 @@ class DetailTvSeriesState extends Equatable {
   final TvSeriesDetail? tvSeriesDetail;
   final String watchlistMessage;
   final bool isAddedToWatchlist;
-  final RequestState state;
+  final RequestState tstate;
 
   const DetailTvSeriesState({
     required this.tvSeriesDetail,
     required this.watchlistMessage,
     required this.isAddedToWatchlist,
-    required this.state,
+    required this.tstate,
   });
 
   DetailTvSeriesState copyWith({
@@ -24,7 +24,7 @@ class DetailTvSeriesState extends Equatable {
       tvSeriesDetail: tvSeriesDetail ?? this.tvSeriesDetail,
       watchlistMessage: watchlistMessage ?? this.watchlistMessage,
       isAddedToWatchlist: isAddedToWatchlist ?? this.isAddedToWatchlist,
-      state: state ?? this.state,
+      tstate: state ?? this.tstate,
     );
   }
 
@@ -33,7 +33,7 @@ class DetailTvSeriesState extends Equatable {
       tvSeriesDetail: null,
       watchlistMessage: '',
       isAddedToWatchlist: false,
-      state: RequestState.Empty,
+      tstate: RequestState.Empty,
     );
   }
 
@@ -41,6 +41,6 @@ class DetailTvSeriesState extends Equatable {
   List<Object> get props => [
     watchlistMessage,
     isAddedToWatchlist,
-    state,
+    tstate,
   ];
 }

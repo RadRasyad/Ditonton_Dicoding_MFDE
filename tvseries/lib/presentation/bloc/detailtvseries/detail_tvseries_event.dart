@@ -13,27 +13,27 @@ class FetchTvSeriesDetailDataWithId extends DetailTvSeriesEvent {
   List<Object> get props => [id];
 }
 
-class AddWatchlist extends DetailTvSeriesEvent {
+class TAddWatchlist extends DetailTvSeriesEvent {
   final TvSeriesDetail detailTvSeries;
 
-  const AddWatchlist(this.detailTvSeries);
+  const TAddWatchlist(this.detailTvSeries);
 
   @override
   List<Object> get props => [detailTvSeries];
 }
 
-class RemoveWatchlist extends DetailTvSeriesEvent {
+class TRemoveWatchlist extends DetailTvSeriesEvent {
   final TvSeriesDetail tvSeriesDetail;
 
-  const RemoveWatchlist(this.tvSeriesDetail);
+  const TRemoveWatchlist(this.tvSeriesDetail);
 
   @override
   List<Object> get props => [tvSeriesDetail];
 }
 
-class LoadWatchlistStatus extends DetailTvSeriesEvent {
+class TLoadWatchlistStatus extends DetailTvSeriesEvent {
   final int id;
-  const LoadWatchlistStatus(this.id);
+  const TLoadWatchlistStatus(this.id);
 
   @override
   List<Object> get props => [id];
