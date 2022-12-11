@@ -14,6 +14,7 @@ class SearchTvSeriesPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Search'),
       ),
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
